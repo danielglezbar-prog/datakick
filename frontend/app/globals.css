@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand-night:   #1A1A2E;
+    --brand-dark:    #16213E;
+    --brand-mid:     #0F3460;
+    --brand-accent:  #00D4AA;
+    --brand-muted:   #8892A4;
+    --brand-surface: #1E2640;
+    --brand-border:  #2A3350;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: #1A1A2E;
+    color: #E8ECF0;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Scrollbar custom */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #1A1A2E; }
+  ::-webkit-scrollbar-thumb { background: #2A3350; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00D4AA40; }
+}
+
+@layer components {
+  /* Botón primario */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm
+           bg-brand-accent text-brand-night
+           hover:bg-brand-accent-dark
+           transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-night;
+  }
+
+  /* Botón secundario */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm
+           border border-brand-border text-gray-300
+           hover:border-brand-accent hover:text-brand-accent
+           transition-all duration-150
+           focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-brand-night;
+  }
+
+  /* Card superficie */
+  .card {
+    @apply bg-brand-surface border border-brand-border rounded-xl p-5;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-accent {
+    @apply badge bg-brand-accent/10 text-brand-accent border border-brand-accent/20;
+  }
+  .badge-muted {
+    @apply badge bg-white/5 text-brand-muted border border-brand-border;
+  }
+
+  /* Input */
+  .input {
+    @apply w-full px-3.5 py-2.5 rounded-lg text-sm
+           bg-brand-dark border border-brand-border
+           text-white placeholder-brand-muted
+           focus:outline-none focus:border-brand-accent focus:ring-1 focus:ring-brand-accent
+           transition-colors duration-150;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply card flex flex-col gap-1;
+  }
+  .stat-value {
+    @apply text-2xl font-semibold text-white;
+  }
+  .stat-label {
+    @apply text-xs text-brand-muted uppercase tracking-wider;
+  }
+
+  /* Grid patrón de fondo */
+  .bg-grid {
+    background-image: linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Acento degradado texto */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-accent to-blue-400 bg-clip-text text-transparent;
+  }
+
+  /* Separador */
+  .divider {
+    @apply border-t border-brand-border;
+  }
+
+  /* Nav link */
+  .nav-link {
+    @apply text-sm text-brand-muted hover:text-white transition-colors duration-150;
+  }
+  .nav-link-active {
+    @apply text-sm text-white font-medium;
+  }
+}
+
+@layer utilities {
+  .text-muted { color: #8892A4; }
+  .text-accent { color: #00D4AA; }
+  .bg-surface { background-color: #1E2640; }
+}
